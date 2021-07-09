@@ -22094,7 +22094,7 @@ class MovieCard extends _reactDefault.default.Component {
                 lineNumber: 6
             },
             __self: this
-        }, movieData.Title));
+        }, movie.Title));
     }
 }
 
@@ -22105,4 +22105,4 @@ class MovieCard extends _reactDefault.default.Component {
 }
 },{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"4zrVZ","../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5LFBx"}]},["1j6wU","5eZF7","4CKBI"], "4CKBI", "parcelRequire279c")
 
-//# sourceMappingURL=index.92d2fa1e.js.map
+//# sourceMappingURL=index.HASH_REF_759e962c95415e6286d28fd392d2fa1e.js.map
