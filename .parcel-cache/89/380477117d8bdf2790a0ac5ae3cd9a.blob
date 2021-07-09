@@ -22053,7 +22053,6 @@ class MainView extends _reactDefault.default.Component {
             __self: this
         }, movies.map((movie)=>{
             return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
-                key: movie._id,
                 __source: {
                     fileName: "C:\\Users\\nacho\\Documents\\Projects\\myFlix-client\\src\\components\\main-view\\main-view.jsx",
                     lineNumber: 23
@@ -22072,4 +22071,4 @@ exports.default = MainView;
 }
 },{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"4zrVZ","../../../../../../AppData/Roaming/nvm/v14.17.0/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"5LFBx"}]},["1j6wU","5eZF7","4CKBI"], "4CKBI", "parcelRequire279c")
 
-//# sourceMappingURL=index.92d2fa1e.js.map
+//# sourceMappingURL=index.HASH_REF_759e962c95415e6286d28fd392d2fa1e.js.map
