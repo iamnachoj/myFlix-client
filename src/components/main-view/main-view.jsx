@@ -21,16 +21,17 @@ class MainView extends React.Component {
     });
   }
   render() {
-    const { movies, selectedMovie } = this.state;
+    const { movies, selectedMovie } = this.state; // creates consts for the state
 
-    if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
+    if (movies.length === 0) return <div className="main-view">The list is empty!</div>; //displays a message in case there isn't movies.
 
-    if (selectedMovie) return <MovieView movie={selectedMovie} />;
+    if (selectedMovie) return <MovieView movie={selectedMovie} />; // at the beginning, selectedMovie is = null, so this won't be triggered.
   
     return (
       <div className="main-view">
-        {movies.map(movie => <MovieCard key={movie._id} movieData={movie} onMovieClick={ (newSelectedMovie) => {this.setState({ selectedMovie: newSelectedMovie })} }/>)}
-      </div>
+        {movies.map(movie => <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>)}
+      </div> // now we are sending a function as a prop (onMovieClick) to MovieCard that will be triggered over there, and makes the function 'setSelectedMovie' trigger.
+      // then selectedMovie will not be null anymore, and then MovieView component will be returned.
     );
   }
 }
