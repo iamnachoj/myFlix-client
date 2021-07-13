@@ -25,7 +25,7 @@ class MainView extends React.Component {
 
     if (movies.length === 0) return <div className="main-view">The list is empty!</div>; //displays a message in case there isn't movies.
 
-    if (selectedMovie) return <MovieView movie={selectedMovie} />; // at the beginning, selectedMovie is = null, so this won't be triggered.
+    if (selectedMovie) return <MovieView movie={selectedMovie} onBackClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }}/>; // at the beginning, selectedMovie = null. It won't be triggered.
   
     return (
       <div className="main-view">
