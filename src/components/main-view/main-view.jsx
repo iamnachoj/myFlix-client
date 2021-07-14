@@ -20,7 +20,7 @@ class MainView extends React.Component {
   render() {
     const { movies, selectedMovie } = this.state; // creates consts for the state
 
-    if (movies.length === 0) return <div className="main-view">The list is empty!</div>; //displays a message in case there isn't movies.
+    if (movies.length === 0) return <div className="main-view"/>// can display a message in case there isn't movies, for now I didn't put anything.
 
     if (selectedMovie) return <MovieView movie={selectedMovie} onBackClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }}/>; // at the beginning, selectedMovie = null. It won't be triggered.
   
