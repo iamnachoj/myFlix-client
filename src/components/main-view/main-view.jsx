@@ -31,5 +31,16 @@ class MainView extends React.Component {
       // then selectedMovie will not be null anymore, and then MovieView component will be returned.
     );
   }
+  componentDidMount(){
+    axios.get('https://myflix-lounge.herokuapp.com/API/Movies')
+      .then(response => {
+        this.setState({
+          movies: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 }
 export default MainView;
