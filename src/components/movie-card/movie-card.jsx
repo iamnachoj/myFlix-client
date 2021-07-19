@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class MovieCard extends React.Component {
   render() {
@@ -6,3 +7,10 @@ export class MovieCard extends React.Component {
     return <div className="movie-card" onClick={() => { onMovieClick(movieData);}}>{movieData.Title}</div>;
   }
 }
+
+MovieCard.propTypes = {
+  movieData: PropTypes.shape({
+    Title: PropTypes.string
+  }).isRequired,
+  onMovieClick: PropTypes.func.isRequired
+};
