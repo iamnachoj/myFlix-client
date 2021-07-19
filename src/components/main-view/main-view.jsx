@@ -10,7 +10,8 @@ class MainView extends React.Component {
     super();
     this.state = {
       movies: [],
-      selectedMovie: null //initial state set to null.
+      selectedMovie: null, 
+      user: null //initial state set to null.
     }
   }
 
@@ -29,7 +30,7 @@ class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie } = this.state; // creates consts for the state
+    const { movies, selectedMovie, user } = this.state; // creates consts for the state
 
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
     if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
