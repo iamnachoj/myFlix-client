@@ -20,7 +20,7 @@ class MainView extends React.Component {
   render() {
     const { movies, selectedMovie } = this.state; // creates consts for the state
 
-    if (movies.length === 0) return <div className="main-view"/>// can display a message in case there isn't movies, for now I didn't put anything.
+    if (movies.length === 0) return <div className="main-view">Loading...</div>
 
     if (selectedMovie) return <MovieView movie={selectedMovie} onBackClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }}/>; // at the beginning, selectedMovie = null. It won't be triggered.
   
@@ -32,7 +32,7 @@ class MainView extends React.Component {
     );
   }
   componentDidMount(){ // this code allows to fetch the API from heroku to catch the movies. 
-    axios.get('https://myflix-lounge.herokuapp.com/API/Movies')
+    axios.get('https://myflix-lounge.herokuapp.com/API/Movies') 
       .then(response => {
         this.setState({
           movies: response.data
