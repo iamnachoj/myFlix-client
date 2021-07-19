@@ -12,7 +12,19 @@ class MainView extends React.Component {
       movies: [],
       selectedMovie: null, 
       user: null //initial state set to null.
-    }
+    };
+  }
+  
+  componentDidMount(){ // this code allows to fetch the API from heroku to catch the movies. 
+    axios.get('https://myflix-lounge.herokuapp.com/API/Movies') 
+      .then(response => {
+        this.setState({
+          movies: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie*/
@@ -24,8 +36,8 @@ class MainView extends React.Component {
 
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
   onLoggedIn(user) {
-    this.setState({
-      user
+    this.setState({ 
+     user 
     });
   }
 
@@ -46,16 +58,6 @@ class MainView extends React.Component {
       // then selectedMovie will not be null anymore, and then MovieView component will be returned.
     );
   }
-  componentDidMount(){ // this code allows to fetch the API from heroku to catch the movies. 
-    axios.get('https://myflix-lounge.herokuapp.com/API/Movies') 
-      .then(response => {
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
+  
 }
 export default MainView;
