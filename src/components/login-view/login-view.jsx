@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { render } from 'react-dom';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
