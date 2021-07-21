@@ -1,12 +1,13 @@
 # myFlix-client
- Client-side block for MyFlix application 
+ Client-side block for MyFlix application. It will support the UI for clients to access myFlix Rest API. 
 
 # Tools
-NodeJS
-Express
-MongoDB
+React.js 
+ - React-Bootstrap
+ - Parcel
+ - Babel
 
 # Features 
-fully responsive built with React
-interaction to Mongo database.
-UI patterns that follow best trends.
+ - fully responsive built with React
+ - interaction to Mongo database.
+ - UI patterns that follow best trends.
