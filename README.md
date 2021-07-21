@@ -11,3 +11,6 @@ React.js
  - fully responsive built with React
  - interaction to Mongo database.
  - UI patterns that follow best trends.
+
+#Deployment
+ - See demo <a href="https://iamnachoj.github.io/myFlix-client/">here!</a>
