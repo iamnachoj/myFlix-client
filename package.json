@@ -4,6 +4,8 @@
   "description": "Client-side block for MyFlix application",
   "main": "src/index.html",
   "scripts": {
+    "predeploy": "npm run dist",
+    "deploy": "gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
