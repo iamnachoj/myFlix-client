@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/iamnachoj/myFlix-client/issues"
   },
-  "homepage": "https://github.com/iamnachoj/myFlix-client/",
+  "homepage": "https://github.com/iamnachoj/myFlix-client/dist/index.html",
   "dependencies": {
     "axios": "^0.21.1",
     "prop-types": "^15.7.2",
