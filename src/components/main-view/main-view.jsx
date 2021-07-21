@@ -1,8 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
+
 import './main-view.scss';
 
 class MainView extends React.Component {
@@ -17,7 +19,8 @@ class MainView extends React.Component {
   }
   
   componentDidMount(){ // this code allows to fetch the API from heroku to catch the movies. 
-    axios.get('https://myflix-lounge.herokuapp.com/API/Movies') 
+    axios
+      .get('https://myflix-lounge.herokuapp.com/API/Movies') 
       .then(response => {
         this.setState({
           movies: response.data
@@ -46,7 +49,7 @@ class MainView extends React.Component {
     const { movies, selectedMovie, user } = this.state; // creates consts for the state
 
     /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
-    if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+    if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
 
     if (movies.length === 0) return <div className="main-view">Loading...</div>
 
