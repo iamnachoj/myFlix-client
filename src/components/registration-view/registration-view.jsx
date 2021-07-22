@@ -21,23 +21,23 @@ export function RegistrationView(props) {
    <Col>
     <Form>
       <Form.Group className="mb-3">
-       <Form.Label className="username"> Username:
-         <Form.Control size="lg" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
+       <Form.Label className="username form-label"> Username:
+         <Form.Control type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
        </Form.Label>
       </Form.Group>
       <Form.Group className="mb-3">
        <Form.Label className="password"> Password:
-        <Form.Control size="lg" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
        </Form.Label>
       </Form.Group>
       <Form.Group className="mb-3">
        <Form.Label className="email">E-mail:
-        <Form.Control size="lg" type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
        </Form.Label>
       </Form.Group>
       <Form.Group className="mb-3">
        <Form.Label className="birthdate">Birth date:
-        <Form.Control size="lg" type="date" value={birthdate} onChange={(e) => setBirthdate(e.target.value)}/>
+        <Form.Control type="date" value={birthdate} onChange={(e) => setBirthdate(e.target.value)}/>
        </Form.Label>
       </Form.Group>
       <Button className="registerBtn" type="submit" onClick={handleSubmit}>
