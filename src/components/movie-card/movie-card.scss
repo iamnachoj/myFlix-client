@@ -2,5 +2,11 @@
   margin: 1rem;
 }
 .img-movie {
-  margin: 3rem;
+  margin: 2rem;
+}
+
+.card-text{
+  height: 72px;
+  text-overflow: ellipsis ;
+  overflow: hidden;
 }
