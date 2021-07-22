@@ -75,10 +75,9 @@ class MainView extends React.Component {
             </Row>
            )
     return (
-      <div className="main-view">
-        {movies.map(movie => <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>)}
-      </div> // now we are sending a function as a prop (onMovieClick) to MovieCard that will be triggered over there, and makes the function 'setSelectedMovie' trigger.
-      // then selectedMovie will not be null anymore, and then MovieView component will be returned.
+      <Row className="justify-content-md-center">
+        {movies.map(movie => <Col md={4}><MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/></Col>)}
+      </Row>
     );
   }
   
