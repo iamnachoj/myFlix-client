@@ -5,6 +5,8 @@ import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { RegistrationView } from "../registration-view/registration-view";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import './main-view.scss';
 
@@ -64,8 +66,14 @@ class MainView extends React.Component {
 
     if (movies.length === 0) return <div className="main-view">Loading...</div>
 
-    if (selectedMovie) return <MovieView movie={selectedMovie} onBackClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }}/>; // at the beginning, selectedMovie = null. It won't be triggered.
-  
+    if (selectedMovie) 
+    return (    
+            <Row class="text-center">
+              <Col>
+              <MovieView movie={selectedMovie} onBackClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }}/>
+              </Col>
+            </Row>
+           )
     return (
       <div className="main-view">
         {movies.map(movie => <MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>)}
