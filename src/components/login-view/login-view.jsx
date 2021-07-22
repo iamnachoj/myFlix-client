@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from "prop-types";
-
+import { Form, Button, Row, Col } from 'react-bootstrap';
 import './login-view.scss';
 
 export function LoginView(props) {
@@ -16,17 +16,25 @@ export function LoginView(props) {
   };
 
   return (
-    <form>
-      <label className="username">
-        Username:
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <label className="password">
-        Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-      </label>
-      <button type="submit" onClick={handleSubmit}>Submit</button>
-    </form>
+    <Row >
+      <Col>
+       <Form className=" login-form">
+        <Form.Group>
+        <Form.Label className="username">
+          Username: 
+          <Form.Control type="text" placeholder="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+        </Form.Label>
+        </Form.Group>
+        <Form.Group>
+        <Form.Label className="password">
+          Password:
+          <Form.Control type="password" placeholder="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </Form.Label>
+        </Form.Group>
+        <Button variant="primary" type="submit" onClick={handleSubmit}>Submit</Button>
+       </Form>
+      </Col>
+    </Row>
   );
 }
 
