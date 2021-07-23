@@ -21,8 +21,8 @@ class MainView extends React.Component {
       register: null    
     };
   }
-  
-  componentDidMount(){ // this code allows to fetch the API from heroku to catch the movies. 
+
+  getMovies(){
     axios
       .get('https://myflix-lounge.herokuapp.com/API/Movies') 
       .then(response => {
@@ -34,7 +34,6 @@ class MainView extends React.Component {
         console.log(error);
       });
   }
-
   /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie*/
   setSelectedMovie(newSelectedMovie) {
     this.setState({
@@ -76,9 +75,13 @@ class MainView extends React.Component {
            )
     return (
       <Row className="justify-content-md-center">
-        {movies.map(movie => <Col sm={12} md={6} lg={4}><MovieCard key={movie._id} movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/></Col>)}
+        {movies.map(movie => <Col key={movie._id}  sm={12} md={6} lg={4}><MovieCard movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/></Col>)}
       </Row>
     );
+  }
+  
+  componentDidMount(){ // this code allows to fetch the API from heroku to catch the movies. 
+    this.getMovies();
   }
   
 }
