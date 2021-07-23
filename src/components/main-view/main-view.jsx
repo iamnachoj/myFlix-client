@@ -22,9 +22,9 @@ class MainView extends React.Component {
     };
   }
   //get request sent by axios to fetch movie data
-  getMovies(){
+  getMovies(token){
     axios
-      .get('https://myflix-lounge.herokuapp.com/API/Movies') 
+      .get('https://myflix-lounge.herokuapp.com/API/Movies', {headers: { Authorization: `Bearer ${token}`}})
       .then(response => {
         this.setState({
           movies: response.data
@@ -42,10 +42,14 @@ class MainView extends React.Component {
   }
 
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
-  onLoggedIn(user) {
+  onLoggedIn(authData) {
+    console.log(authData)
     this.setState({ 
-     user 
+     user: authData.user.Name
     });
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('Name', authData.user.Name);
+    this.getMovies(authData.token);
   }
 
   //same as to log in, but for the registration
