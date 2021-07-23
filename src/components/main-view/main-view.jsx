@@ -68,7 +68,7 @@ class MainView extends React.Component {
 
     if (selectedMovie) 
     return (    
-            <Row class="text-center">
+            <Row>
               <Col>
               <MovieView movie={selectedMovie} onBackClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie) }}/>
               </Col>
