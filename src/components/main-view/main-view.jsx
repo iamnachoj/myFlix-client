@@ -5,8 +5,8 @@ import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { RegistrationView } from "../registration-view/registration-view";
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+
+import { Row, Col } from 'react-bootstrap';
 
 import './main-view.scss';
 
@@ -21,7 +21,7 @@ class MainView extends React.Component {
       register: null    
     };
   }
-
+  //get request sent by axios to fetch movie data
   getMovies(){
     axios
       .get('https://myflix-lounge.herokuapp.com/API/Movies') 
@@ -79,7 +79,7 @@ class MainView extends React.Component {
       </Row>
     );
   }
-  
+
   componentDidMount(){ // this code allows to fetch the API from heroku to catch the movies. 
     this.getMovies();
   }
