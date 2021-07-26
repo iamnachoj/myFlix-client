@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 export class MovieView extends React.Component{
 
  render(){
-   const { movie } = this.props;
+   const { movie, onBackClick } = this.props;
    return (
      <Row className="movie-view">
       <Col className="text-center">
@@ -32,9 +32,7 @@ export class MovieView extends React.Component{
          <span className="label">Genre: </span>
          <Link to={"/genre/" + movie.Genre.Name}><span className="value">{movie.Genre.Name}</span></Link>
        </div>
-       <Link to={"/"}>
-       <Button>Back</Button>
-       </Link>
+       <Button onClick={()=> onBackClick()}>Back</Button>
       </Col>
      </Row>
    )
