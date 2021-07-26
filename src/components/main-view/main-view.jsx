@@ -8,6 +8,7 @@ import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { RegistrationView } from "../registration-view/registration-view";
 import { DirectorView } from '../director-view/director-view';
+import { GenreView } from '../genre-view/genre-view';
 import { Row, Col, Button } from 'react-bootstrap';
 
 import './main-view.scss';
@@ -95,6 +96,11 @@ class MainView extends React.Component {
           <Route path="/director/:name" render={({match}) => {
             return <Col md={8}>
                <DirectorView movie={movies.find(movie => movie.Director.Name === match.params.name)}/>
+            </Col>
+          }} />
+          <Route path="/genre/:name" render={({match}) => {
+            return <Col md={8}>
+               <GenreView movie={movies.find(movie => movie.Genre.Name === match.params.name)}/>
             </Col>
           }} />
         </Row>
