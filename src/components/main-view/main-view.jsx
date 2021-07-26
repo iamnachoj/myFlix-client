@@ -70,8 +70,6 @@ class MainView extends React.Component {
   render() {
     const { movies, selectedMovie, user, register } = this.state; // creates consts for the state
 
-    // if (!register) return (<RegistrationView onRegistration={(register) => this.onRegistration(register)}/>);
-
     return (
       <Router>
       <Row><Button onClick={()=>{this.onLoggedOut()}}>Log out</Button></Row>
