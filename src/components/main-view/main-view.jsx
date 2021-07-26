@@ -19,7 +19,6 @@ class MainView extends React.Component {
     super();
     this.state = {
       movies: [],
-      selectedMovie: null, 
       user: null, //initial state set to null.
       register: null    
     };
@@ -36,12 +35,6 @@ class MainView extends React.Component {
       .catch(error => {
         console.log(error);
       });
-  }
-  /*When a movie is clicked, this function is invoked and updates the state of the `selectedMovie` *property to that movie*/
-  setSelectedMovie(newSelectedMovie) {
-    this.setState({
-      selectedMovie: newSelectedMovie
-    });
   }
 
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
@@ -68,7 +61,7 @@ class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie, user, register } = this.state; // creates consts for the state
+    const { movies, user, register } = this.state; // creates consts for the state
 
     return (
       <Router>
