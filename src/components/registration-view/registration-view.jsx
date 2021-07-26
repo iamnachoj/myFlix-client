@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import PropTypes from "prop-types";
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import "./registration-view.scss";
@@ -12,7 +13,20 @@ export function RegistrationView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password, email, birthdate);
-    props.onRegistration(username);
+    axios.post('https://myflix-lounge.herokuapp.com/users', {
+      Name: username,
+      Password: password,
+      Email: email,
+      Birthday: birthdate
+    })
+    .then(response => {
+      const data = response.data;
+      console.log(data);
+      window.open('/', '_self');
+    })
+    .catch(e => {
+      console.log('lacks information, or incorrect format')
+    });
   };
 
   return (
