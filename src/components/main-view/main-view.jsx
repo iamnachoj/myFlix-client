@@ -70,23 +70,23 @@ class MainView extends React.Component {
   render() {
     const { movies, selectedMovie, user, register } = this.state; // creates consts for the state
 
-    // if (!register) return (<RegistrationView onRegistration={(register) => this.onRegistration(register)}/>); NOT RELEVANT ATM
-    
-    /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
-    if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-
-    if (movies.length === 0) return <div className="main-view">Loading...</div>
+    // if (!register) return (<RegistrationView onRegistration={(register) => this.onRegistration(register)}/>);
 
     return (
       <Router>
       <Row><Button onClick={()=>{this.onLoggedOut()}}>Log out</Button></Row>
       <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
+            /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/
+            if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
             return movies.map(movie => (
               <Col sm={12} md={6} lg={4} key={movie._id}>
                 <MovieCard movieData={movie} />
               </Col>
             ))
+          }} />
+          <Route path="/register" render={() => {
+            return <RegistrationView onBackClick={() => history.goBack()}/> 
           }} />
           <Route path="/movies/:movieId" render={({ match, history }) => {
             return <Col md={8}>
@@ -99,9 +99,8 @@ class MainView extends React.Component {
             </Col>
           }} />
           <Route path="/genre/:name" render={({match, history}) => {
-            return <Col md={8}>
+            return
                <GenreView movie={movies.find(movie => movie.Genre.Name === match.params.name)} onBackClick={() => history.goBack()}/>
-            </Col>
           }} />
         </Row>
       </Router>

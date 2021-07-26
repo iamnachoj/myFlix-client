@@ -30,7 +30,7 @@ export function RegistrationView(props) {
   };
 
   return (
- <Row>
+ <>
    <Col></Col>
    <Col>
     <Form>
@@ -60,7 +60,7 @@ export function RegistrationView(props) {
     </Form>
   </Col>
   <Col></Col>
-</Row>
+</>
   );
 }
 
