@@ -6,7 +6,7 @@ import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { RegistrationView } from "../registration-view/registration-view";
 
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
 
 import './main-view.scss';
 
@@ -43,7 +43,6 @@ class MainView extends React.Component {
 
   /* When a user successfully logs in, this function updates the `user` property in state to that *particular user*/
   onLoggedIn(authData) {
-    console.log(authData)
     this.setState({ 
      user: authData.user.Name
     });
@@ -51,7 +50,13 @@ class MainView extends React.Component {
     localStorage.setItem('Name', authData.user.Name);
     this.getMovies(authData.token);
   }
-
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
+    });
+  }
   //same as to log in, but for the registration
   onRegistration(register) {
     this.setState({
@@ -78,14 +83,23 @@ class MainView extends React.Component {
             </Row>
            )
     return (
+      <>
+      <Row><Button onClick={()=>{this.onLoggedOut()}}>Log out</Button></Row>
       <Row className="justify-content-md-center">
         {movies.map(movie => <Col key={movie._id}  sm={12} md={6} lg={4}><MovieCard movieData={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/></Col>)}
       </Row>
+      </>
     );
   }
 
   componentDidMount(){ // this code allows to fetch the API from heroku to catch the movies. 
-    this.getMovies();
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('Name')
+      });
+      this.getMovies(accessToken);
+    }
   }
   
 }
