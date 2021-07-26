@@ -7,7 +7,7 @@ import {Row, Col, Button} from 'react-bootstrap';
 export class MovieView extends React.Component{
 
  render(){
-   const { movie, onBackClick} = this.props;
+   const { movie } = this.props;
    return (
      <Row className="movie-view">
       <Col className="text-center">
@@ -24,7 +24,15 @@ export class MovieView extends React.Component{
          <span className="label">Description: </span>
          <span className="value">{movie.Description}</span>
        </div>
-       <Button onClick={() => onBackClick(null)}>Back</Button>
+       <div className="movie-director">
+         <span className="label">Director: </span>
+         <span className="value">{movie.Director.Name}</span>
+       </div>
+       <div className="movie-genre">
+         <span className="label">Genre: </span>
+         <span className="value">{movie.Genre.Name}</span>
+       </div>
+       <Button>Back</Button>
       </Col>
      </Row>
    )
@@ -36,6 +44,5 @@ MovieView.propTypes = {
     Title: PropTypes.string,
     Description: PropTypes.string,
     ImagePath: PropTypes.string
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired
+  }).isRequired
 };
