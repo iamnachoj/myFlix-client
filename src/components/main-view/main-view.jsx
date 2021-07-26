@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -77,6 +77,7 @@ class MainView extends React.Component {
             ))
           }} />
           <Route path="/register" render={() => {
+            if (user) return <Redirect to="/" />
             return <RegistrationView onBackClick={() => history.goBack()}/> 
           }} />
           <Route path="/movies/:movieId" render={({ match, history }) => {
@@ -95,6 +96,12 @@ class MainView extends React.Component {
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
             return <Col md={8}>
                <GenreView movie={movies.find(movie => movie.Genre.Name === match.params.name)} onBackClick={() => history.goBack()}/>
+            </Col>
+          }}/>
+          <Route path="/users/:username" render={({match, history}) => {
+            if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+            return <Col md={8}>
+               <ProfileView onBackClick={() => history.goBack()}/>
             </Col>
           }}/>
         </Row>

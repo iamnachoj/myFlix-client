@@ -57,7 +57,7 @@ export function RegistrationView(props) {
       <Button className="registerBtn" type="submit" onClick={handleSubmit}>
         Register
       </Button>
-      <p>already registered? go to <Link to={"/"}>Log in page</Link></p>
+      <p>Already registered? go to <Link to={"/"}>Log in page</Link></p>
     </Form>
   </Col>
   <Col></Col>
