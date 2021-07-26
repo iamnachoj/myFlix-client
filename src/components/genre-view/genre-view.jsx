@@ -1,7 +1,6 @@
 import React from 'react';
 import './genre-view.scss';
 import { Row, Col, Button } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
 
 export class GenreView extends React.Component{
   render(){
