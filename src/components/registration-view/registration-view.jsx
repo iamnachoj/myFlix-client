@@ -3,13 +3,13 @@ import axios from 'axios';
 import PropTypes from "prop-types";
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import "./registration-view.scss";
+import {Link} from 'react-router-dom'
 
 export function RegistrationView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password, email, birthdate);
@@ -57,6 +57,7 @@ export function RegistrationView(props) {
       <Button className="registerBtn" type="submit" onClick={handleSubmit}>
         Register
       </Button>
+      <p>already registered? go to <Link to={"/"}>Log in page</Link></p>
     </Form>
   </Col>
   <Col></Col>
@@ -70,6 +71,5 @@ RegistrationView.propTypes = {
     password: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     birthdate: PropTypes.string.isRequired,
-  }),
-  onRegistration: PropTypes.func.isRequired,
+  })
 }
