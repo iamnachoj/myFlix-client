@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 export class DirectorView extends React.Component{
   render(){
-    const { movie } = this.props;
+    const { movie, onBackClick } = this.props;
     return(
       <>
       <Row className="director-view">
@@ -23,7 +23,7 @@ export class DirectorView extends React.Component{
          <span className="label">Birth date: </span>
          <span className="value">{movie.Director.Birth}</span>
        </div>
-      <Link to={"/"}><Button className="back-button">Back</Button></Link>
+      <Button className="back-button" onClick={() => onBackClick()}>Back</Button>
       </Col>
      </Row>
      
