@@ -10,7 +10,7 @@ import { RegistrationView } from "../registration-view/registration-view";
 import { DirectorView } from '../director-view/director-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { GenreView } from '../genre-view/genre-view';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 import './main-view.scss';
 
@@ -47,20 +47,12 @@ class MainView extends React.Component {
     localStorage.setItem('Name', authData.user.Name);
     this.getMovies(authData.token);
   }
-  onLoggedOut() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('Name');
-    this.setState({
-      user: null
-    });
-  }
 
   render() {
     const { movies, user } = this.state; // creates consts for the state
 
     return (
       <Router>
-      <Row><Button onClick={()=>{this.onLoggedOut()}}>Log out</Button></Row>
       <Row className="main-view justify-content-md-center">
           <Route exact path="/" render={() => {
             /* If there is no user, the LoginView is rendered. If there is a user logged in, the user details are *passed as a prop to the LoginView*/

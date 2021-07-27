@@ -3,6 +3,7 @@ import axios from 'axios';
 import './profile-view.scss';
 import { Row, Col, Button } from 'react-bootstrap';
 
+
 export class ProfileView extends React.Component{
   
   constructor(){
@@ -15,7 +16,16 @@ export class ProfileView extends React.Component{
       FavouriteMovies: []    
     };
   }
-  
+
+  onLoggedOut() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('Name');
+    props.setState({
+      user: null
+    });
+    
+  }
+
   getUser(token) {
     let url = 'https://myflix-lounge.herokuapp.com/users/' + localStorage.getItem('Name');
 
@@ -37,6 +47,7 @@ export class ProfileView extends React.Component{
     const { user, onBackClick } = this.props;
     return(
       <>
+      <Row><a href="/"><Button onClick={()=>{this.onLoggedOut()}}>Log out</Button></a></Row>
       <Row className="genre-view">
         <Col>
        <h1 className="Title">My Profile</h1>
