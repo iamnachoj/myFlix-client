@@ -1,10 +1,17 @@
+//Modules
 import React, { useState } from 'react';
 import axios from 'axios';
 import PropTypes from "prop-types";
-import { Form, Button, Row, Col } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
 import './login-view.scss';
 
+
+//React-bootstrap
+import { Form, Button, Row, Col } from 'react-bootstrap';
+
+//React-router-dom
+import {Link} from 'react-router-dom';
+
+//LoginView Component
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
@@ -55,6 +62,7 @@ export function LoginView(props) {
   );
 }
 
+//Proptypes
 LoginView.propTypes = {
   user: PropTypes.shape({
     username: PropTypes.string.isRequired,

@@ -1,7 +1,12 @@
+//Modules
 import React from 'react';
 import './genre-view.scss';
+
+//React-bootstrap
 import { Row, Col, Button } from 'react-bootstrap';
 
+
+//GenreView component
 export class GenreView extends React.Component{
   render(){
     const { movie, onBackClick } = this.props;

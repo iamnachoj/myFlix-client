@@ -1,10 +1,15 @@
+//Modules
 import React from 'react';
 import PropTypes from 'prop-types';
+
+//React-bootstrap
 import { Card, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
+//CSS
 import './movie-card.scss';
 
+//MovieCard Component
 export class MovieCard extends React.Component {
   render() {
     const { movieData } = this.props;
@@ -22,6 +27,7 @@ export class MovieCard extends React.Component {
   }
 }
 
+//Proptypes
 MovieCard.propTypes = {
   movieData: PropTypes.shape({
     Title: PropTypes.string

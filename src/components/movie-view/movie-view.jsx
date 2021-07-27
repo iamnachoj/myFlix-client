@@ -1,9 +1,17 @@
+//Modules
 import React from 'react';
 import PropTypes from 'prop-types';
-import './movie-view.scss';
+
+//React-Bootstrap
 import {Row, Col, Button} from 'react-bootstrap';
+
+//React-router-dom
 import {Link} from 'react-router-dom';
 
+//CSS
+import './movie-view.scss';
+
+//MovieView Component
 export class MovieView extends React.Component{
 
  render(){
@@ -39,6 +47,7 @@ export class MovieView extends React.Component{
  }
 }
 
+//Proptypes
 MovieView.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string,

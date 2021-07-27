@@ -47,7 +47,7 @@ export class ProfileView extends React.Component{
     const { user, onBackClick } = this.props;
     return(
       <>
-      <Row><a href="/"><Button onClick={()=>{this.onLoggedOut()}}>Log out</Button></a></Row>
+      
       <Row className="genre-view">
         <Col>
        <h1 className="Title">My Profile</h1>
@@ -66,6 +66,7 @@ export class ProfileView extends React.Component{
        <Button className="back-button" onClick={() => onBackClick()}>Back</Button>
       </Col>
      </Row>
+     <Row><a href="/"><Button onClick={()=>{this.onLoggedOut()}}>Log out</Button></a></Row>
      
      </>
     )

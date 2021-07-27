@@ -1,8 +1,11 @@
+//Modules
 import React from 'react';
 import './director-view.scss';
-import { Row, Col, Button } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
 
+//React-bootstrap 
+import { Row, Col, Button } from 'react-bootstrap';
+
+//DirectorView component
 export class DirectorView extends React.Component{
   render(){
     const { movie, onBackClick } = this.props;

@@ -1,10 +1,18 @@
+//Modules
 import React, { useState } from "react";
 import axios from 'axios';
 import PropTypes from "prop-types";
-import { Form, Button, Row, Col } from 'react-bootstrap';
-import "./registration-view.scss";
+
+//React-Bootstrap
+import { Form, Button, Col } from 'react-bootstrap';
+
+//React-Router-Dom
 import {Link} from 'react-router-dom'
 
+//CSS
+import "./registration-view.scss";
+
+//RegistrationView Component
 export function RegistrationView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -65,6 +73,8 @@ export function RegistrationView(props) {
   );
 }
 
+
+//Proptypes
 RegistrationView.propTypes = {
   register: PropTypes.shape({
     username: PropTypes.string.isRequired,
