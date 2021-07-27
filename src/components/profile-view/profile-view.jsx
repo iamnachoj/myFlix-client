@@ -143,28 +143,30 @@ export class ProfileView extends React.Component{
     const { user, onBackClick } = this.props;
     return(
       <> 
-      <Row className="genre-view">
-        <Col>
-       <h1 className="Title">My Profile</h1>
-       <div className="user-name">
-         <span className="label">Name: </span>
-         <span className="value">{user}</span>
-       </div>
-       <div className="user-email">
-         <span className="label">Email: </span>
-         <span className="value">{this.state.Email}</span>--
-       </div>
-       <div className="user-date">
-         <span className="label">Birthdate: </span>
-         <span className="value">{this.state.Birthday}</span>
-       </div>
-       <Button className="back-button" onClick={() => onBackClick()}>Back</Button>
-       <a href="/"><Button variant="secondary"className="logout-button"onClick={()=>{this.onLoggedOut()}}>Log out</Button></a>
-      </Col>
-     </Row>
+      
      <Card className="profile-card">
-
-          <h1 className="section">Update Profile</h1>
+            <Row className="profile-view">
+              <Col className="center">
+               <h2 className="center">My Profile</h2>
+               <div className="user-name">
+                <span className="label">Name: </span>
+                <span className="value">{user}</span>
+              </div>
+              <div className="user-email">
+               <span className="label">Email: </span>
+               <span className="value">{this.state.Email}</span>--
+              </div>
+              <div className="user-date">
+               <span className="label">Birthdate: </span>
+               <span className="value">{this.state.Birthday}</span>
+             </div>
+              <Button className="back-button" onClick={() => onBackClick()}>Back</Button>
+              <a href="/"><Button variant="secondary"className="logout-button"onClick={()=>{this.onLoggedOut()}}>Log out</Button></a>
+             </Col>
+            </Row>
+      </Card>
+       <Card> 
+          <h2 className="center">Update Profile</h2>
           <Card.Body>
             <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(e, this.Name, this.Password, this.Email, this.Birthdate)}>
 
@@ -190,13 +192,13 @@ export class ProfileView extends React.Component{
                 <Form.Control type="date" placeholder="Change Birthdate" onChange={(e) => this.setBirthdate(e.target.value)} />
               </Form.Group>
 
-              <Button variant='warning' type="submit">
+              <Button variant='primary' type="submit">
                 Update
               </Button>
             </Form>
           </Card.Body>
        </Card>
-       <Card>
+       <Card className="delete-card center">
          <Card.Title><h3>Delete your Account</h3></Card.Title>
          <Card.Body>
                 <Button variant='danger' onClick={(e) => this.handleDeleteUser(e)}>
