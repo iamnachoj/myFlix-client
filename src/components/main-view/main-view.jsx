@@ -54,15 +54,9 @@ class MainView extends React.Component {
       user: null
     });
   }
-  //same as to log in, but for the registration
-  onRegistration(register) {
-    this.setState({
-     register,
-    });
-  }
 
   render() {
-    const { movies, user, register } = this.state; // creates consts for the state
+    const { movies, user } = this.state; // creates consts for the state
 
     return (
       <Router>
@@ -99,10 +93,10 @@ class MainView extends React.Component {
                <GenreView movie={movies.find(movie => movie.Genre.Name === match.params.name)} onBackClick={() => history.goBack()}/>
             </Col>
           }}/>
-          <Route path="/users/:username" render={({match, history}) => {
+          <Route path="/my-profile" render={({history}) => {
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
             return <Col md={8}>
-               <ProfileView onBackClick={() => history.goBack()}/>
+               <ProfileView user={user} onBackClick={() => history.goBack()}/>
             </Col>
           }}/>
         </Row>

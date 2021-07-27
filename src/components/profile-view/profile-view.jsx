@@ -12,11 +12,15 @@ export class ProfileView extends React.Component{
        <h1 className="Title">My Profile</h1>
        <div className="user-name">
          <span className="label">Name: </span>
-         <span className="value">{user.Name}</span>
+         <span className="value">{user}</span>
        </div>
        <div className="user-email">
          <span className="label">Email: </span>
-         <span className="value">{User.Email}</span>
+         <span className="value">{user.Email}</span>
+       </div>
+       <div className="user-date">
+         <span className="label">Birthdate: </span>
+         <span className="value">{user.Birthday}</span>
        </div>
        <Button className="back-button" onClick={() => onBackClick()}>Back</Button>
       </Col>
