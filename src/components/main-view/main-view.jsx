@@ -101,7 +101,7 @@ class MainView extends React.Component {
           <Route path="/my-profile" render={({history}) => {
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
             return <Col md={8}>
-               <ProfileView user={user} onBackClick={() => history.goBack()}/></Col>
+               <ProfileView user={user} movies={movies} onBackClick={() => history.goBack()}/></Col>
           }}/>
 
         </Row>

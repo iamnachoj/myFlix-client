@@ -4,7 +4,7 @@ import axios from 'axios';
 import {UpdateView} from '../update-view/update-view'
 
 //React-bootstrap
-import { Row, Col, Button, Card, Form } from 'react-bootstrap';
+import { Row, Col, Button, Card, Form, CardDeck} from 'react-bootstrap';
 
 //CSS
 import './profile-view.scss';
@@ -46,7 +46,7 @@ export class ProfileView extends React.Component{
                 Password: response.data.Password,
                 Email: response.data.Email,
                 Birthday: response.data.Birthday,
-                FavoriteMovies: response.data.FavoriteMovies
+                FavouriteMovies: response.data.FavouriteMovies
             });
         });   
   }
@@ -115,6 +115,24 @@ export class ProfileView extends React.Component{
   setBirthdate(input) {
     this.Birthdate = input;
   }
+  
+  // DELETE Favourite Movies 
+  removeFavouriteMovie() {
+    const token = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
+
+    axios
+      .delete(`https://myflix-lounge.herokuapp.com/users/${username}/movies/${movie._id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(() => {
+        alert('Movie was removed');
+        this.componentDidMount();
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
 
   //DELETE method for users
   handleDeleteUser(e) {
@@ -139,11 +157,10 @@ export class ProfileView extends React.Component{
   }
 
   render(){
-    const { FavoriteMovies, validated } = this.state;
-    const { user, onBackClick } = this.props;
+    const { FavouriteMovies, validated } = this.state;
+    const { user, onBackClick, movies } = this.props;
     return(
-      <> 
-      
+      <>  
      <Card className="profile-card">
             <Row className="profile-view">
               <Col className="center">
@@ -164,6 +181,29 @@ export class ProfileView extends React.Component{
               <a href="/"><Button variant="secondary"className="logout-button"onClick={()=>{this.onLoggedOut()}}>Log out</Button></a>
              </Col>
             </Row>
+      </Card>
+      <Card className="favmovie-card">
+         {FavouriteMovies.length === 0 && <div className="text-center">Empty.</div>}
+          <div className="favourites-movies ">
+            {FavouriteMovies.length > 0 &&
+               movies.map((movie) => {
+                 if (movie._id === FavouriteMovies.find((favMovie) => favMovie === movie._id)) {
+                   return (
+                    <CardDeck key={movie._id} className="movie-card-deck">
+                      <Card className="favourites-item card-content" style={{ width: '16rem' }} key={movie._id}>
+                      <Card.Img style={{ width: '18rem' }} className="movieCard" variant="top" src={movie.ImageURL} />
+                      <Card.Body>
+                       <Card.Title className="movie-card-title">{movie.Title}</Card.Title>
+                      <Button size='sm' className='profile-button remove-favourite' variant='danger' value={movie._id} onClick={(e) => this.removeFavouriteMovie(e, movie)}>
+                        Remove
+                       </Button>
+                     </Card.Body>
+                   </Card>
+                    </CardDeck>
+                  );
+                }
+               })}
+          </div>
       </Card>
        <Card> 
           <h2 className="center">Update Profile</h2>
