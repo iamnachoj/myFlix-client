@@ -1,7 +1,6 @@
 //Modules
 import React from 'react';
 import axios from 'axios';
-import {UpdateView} from '../update-view/update-view'
 
 //React-bootstrap
 import { Row, Col, Button, Card, Form, CardDeck} from 'react-bootstrap';

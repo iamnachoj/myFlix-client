@@ -18,7 +18,10 @@ export function RegistrationView(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
+  const [validated, setValidated] = useState(false);
+
   const handleSubmit = (e) => {
+    setValidated(true);
     e.preventDefault();
     console.log(username, password, email, birthdate);
     axios.post('https://myflix-lounge.herokuapp.com/users', {
@@ -41,25 +44,34 @@ export function RegistrationView(props) {
  <>
    <Col></Col>
    <Col>
-    <Form>
+    <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
        <Form.Label className="username form-label"> Username:
-         <Form.Control type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
+         <Form.Control required type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
        </Form.Label>
+       <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3">
        <Form.Label className="password"> Password:
-        <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <Form.Control required type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
        </Form.Label>
+       <Form.Control.Feedback>Looks secure enough</Form.Control.Feedback>
+       <Form.Control.Feedback type="invalid">
+            Please provide a password that is longer than 6 characters
+          </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3">
        <Form.Label className="email">E-mail:
         <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)}/>
        </Form.Label>
+       <Form.Control.Feedback>correct E-mail!</Form.Control.Feedback>
+       <Form.Control.Feedback type="invalid">
+            Please provide a valid E-mail.
+          </Form.Control.Feedback>
       </Form.Group>
       <Form.Group className="mb-3">
        <Form.Label className="birthdate">Birth date:
-        <Form.Control type="date" value={birthdate} onChange={(e) => setBirthdate(e.target.value)}/>
+        <Form.Control required type="date" value={birthdate} onChange={(e) => setBirthdate(e.target.value)}/>
        </Form.Label>
       </Form.Group>
       <Button className="registerBtn" type="submit" onClick={handleSubmit}>
