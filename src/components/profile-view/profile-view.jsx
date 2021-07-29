@@ -116,9 +116,9 @@ export class ProfileView extends React.Component{
   }
   
   // DELETE Favourite Movies 
-  removeFavouriteMovie() {
+  removeFavouriteMovie(e, movie) {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user');
+    const username = localStorage.getItem('Name');
 
     axios
       .delete(`https://myflix-lounge.herokuapp.com/users/${username}/movies/${movie._id}`, {
