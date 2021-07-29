@@ -181,6 +181,7 @@ export class ProfileView extends React.Component{
             </Row>
       </Card>
       <Card className="favmovie-card">
+          <Card.Title className="center"><h3>Favourite Movies</h3></Card.Title>
          {FavouriteMovies.length === 0 && <div className="text-center">Empty.</div>}
           <div className="favourites-movies ">
             {FavouriteMovies.length > 0 &&
@@ -189,7 +190,6 @@ export class ProfileView extends React.Component{
                    return (
                     <CardDeck key={movie._id} className="movie-card-deck">
                       <Card className="favourites-item card-content" style={{ width: '16rem' }} key={movie._id}>
-                      <Card.Img style={{ width: '18rem' }} className="movieCard" variant="top" src={movie.ImageURL} />
                       <Card.Body>
                        <Card.Title className="movie-card-title">{movie.Title}</Card.Title>
                       <Button size='sm' className='profile-button remove-favourite' variant='danger' value={movie._id} onClick={(e) => this.removeFavouriteMovie(e, movie)}>
