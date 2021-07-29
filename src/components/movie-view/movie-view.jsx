@@ -17,7 +17,7 @@ export class MovieView extends React.Component{
  
   addFavorite() {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user');
+    const username = localStorage.getItem('Name');
 
     axios.post(`https://myflix-lounge.herokuapp.com/users/${username}/movies/${this.props.movie._id}`, {}, {
       headers: { Authorization: `Bearer ${token}` }
