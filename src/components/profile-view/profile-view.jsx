@@ -68,10 +68,9 @@ export class ProfileView extends React.Component{
       e.preventDefault();
 
       const token = localStorage.getItem('token');
-      const username = localStorage.getItem('user');
-      let url = 'https://myflix-lounge.herokuapp.com/users/' + localStorage.getItem('Name');
+      const username = localStorage.getItem('Name');
 
-      axios.put(url, {
+      axios.put(`https://myflixbypartearroyo.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
         data: {
           Name: newName ? newName : this.state.Name,
@@ -231,7 +230,7 @@ export class ProfileView extends React.Component{
                 <Form.Control type="date" placeholder="Change Birthdate" onChange={(e) => this.setBirthdate(e.target.value)} />
               </Form.Group>
 
-              <Button variant='primary' type="submit">
+              <Button variant='primary' type="submit" onClick={(e) => this.handleUpdate(e, this.Name, this.Password, this.Email, this.Birthdate)}>
                 Update
               </Button>
             </Form>
