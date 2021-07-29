@@ -57,7 +57,7 @@ export class ProfileView extends React.Component{
       });
 
       const form = e.currentTarget;
-      if (form.checkValidity() === false) {
+      if (form.checkValidity() === true) {
         e.preventDefault();
         e.stopPropagation();
         this.setState({
@@ -88,7 +88,7 @@ export class ProfileView extends React.Component{
             Birthdate: response.data.Birthdate,
           });
           localStorage.setItem('Name', this.state.Name);
-          window.open(`/users/${username}`, '_self');
+          window.open('/my-profile', '_self');
         })
         .catch(function (error) {
          console.log(error);
@@ -222,7 +222,7 @@ export class ProfileView extends React.Component{
 
               <Form.Group controlId="formBasicEmail">
                 <Form.Label className="form-label">Email</Form.Label>
-                <Form.Control type="email" placeholder="Change Email" onChange={(e) => this.setEmail(e.target.value)}/>
+                <Form.Control type="email" placeholder={this.state.Email} readOnly/>
               </Form.Group>
 
               <Form.Group controlId="formBasicBirthday">
@@ -230,7 +230,7 @@ export class ProfileView extends React.Component{
                 <Form.Control type="date" placeholder="Change Birthdate" onChange={(e) => this.setBirthdate(e.target.value)} />
               </Form.Group>
 
-              <Button variant='primary' type="submit" onClick={(e) => this.handleUpdate(e, this.Name, this.Password, this.Email, this.Birthdate)}>
+              <Button variant='primary' type="submit" onClick={(e) => this.handleUpdate(e)}>
                 Update
               </Button>
             </Form>
