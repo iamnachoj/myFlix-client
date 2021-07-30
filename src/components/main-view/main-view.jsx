@@ -66,6 +66,7 @@ class MainView extends React.Component {
            { /* All Routes */}
           <Route exact path="/" render={() => {            
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+            if (movies === []) return <MainView> loading... </MainView>
             return movies.map(movie => (
               <Col sm={12} md={6} lg={4} key={movie._id}>
                 <MovieCard movieData={movie} />
