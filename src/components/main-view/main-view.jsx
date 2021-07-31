@@ -3,6 +3,10 @@ import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
+//React Redux
+import { connect } from 'react-redux';
+import { setMovies } from '../../actions/actions';
+
 //React Components
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -11,6 +15,7 @@ import { RegistrationView } from "../registration-view/registration-view";
 import { DirectorView } from '../director-view/director-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { GenreView } from '../genre-view/genre-view';
+import MoviesList from '../movies-list/movies-list';
 
 //React Bootstrap
 import { Row, Col } from 'react-bootstrap';
@@ -24,9 +29,7 @@ class MainView extends React.Component {
   constructor(){
     super();
     this.state = {
-      movies: [],
-      user: null, 
-      register: null    
+      user: null 
     };
   }
 
@@ -37,9 +40,7 @@ class MainView extends React.Component {
     axios
       .get('https://myflix-lounge.herokuapp.com/API/Movies', {headers: { Authorization: `Bearer ${token}`}})
       .then(response => {
-        this.setState({
-          movies: response.data
-        });
+        this.props.setMovies(response.data);
       })
       .catch(error => {
         console.log(error);
@@ -58,7 +59,8 @@ class MainView extends React.Component {
 
   //Render method
   render() {
-    const { movies, user } = this.state;
+    let { movies } = this.props
+    let { user } = this.state;
 
     return (
       <Router> 
@@ -66,12 +68,10 @@ class MainView extends React.Component {
            { /* All Routes */}
           <Route exact path="/" render={() => {            
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-            if (movies === []) return <MainView> loading... </MainView>
-            return movies.map(movie => (
-              <Col sm={12} md={6} lg={4} key={movie._id}>
-                <MovieCard movieData={movie} />
-              </Col>
-            ))}} />
+            if (movies === 0) return <MainView> loading... </MainView>
+            return <Col sm={12} md={6} lg={4} key={movie._id}><MovieList movies={movies} /></Col>
+            }
+           } />
 
 
           <Route path="/register" render={() => {
@@ -122,4 +122,8 @@ class MainView extends React.Component {
   
 }
 
-export default MainView;
+let mapStateToProps = state => {
+  return { movies: state.movies }
+}
+
+export default connect(mapStateToProps, { setMovies } )(MainView);
