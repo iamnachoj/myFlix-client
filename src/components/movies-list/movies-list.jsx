@@ -1,5 +1,5 @@
 import React from 'react';
-import Col from 'react-bootstrap/Col';
+import {Row, Col} from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import { MovieCard } from '../movie-card/movie-card';
@@ -20,7 +20,7 @@ function MoviesList(props) {
   if (!movies) return <div className="main-view"/>;
 
  return filteredMovies.map(m => (
-  <MovieCard movie={m} key={m._id}/>
+  <Col sm={12} md={6} lg={4}><MovieCard movie={m} key={m._id}/></Col>
   ));
 }
 
