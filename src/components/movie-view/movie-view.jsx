@@ -34,7 +34,7 @@ export class MovieView extends React.Component{
    const { movie, onBackClick } = this.props;
    return (
      <Row className="movie-view">
-      <Col className="text-center">
+      <Col sm={12} md={7} className="text-center">
         <div className="movie-poster">
          <img src={movie.imagePath} />
         </div>
