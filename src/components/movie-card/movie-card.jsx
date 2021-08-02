@@ -12,13 +12,13 @@ import './movie-card.scss';
 //MovieCard Component
 export class MovieCard extends React.Component {
   render() {
-    const { movieData } = this.props;
+    const { movie } = this.props;
     return (
       <Card className="movie-card">
-        <Card.Img variant="top" className="img-movie" src={movieData.imagePath} />
+        <Card.Img variant="top" className="img-movie" src={movie.imagePath} />
         <Card.Body className="movie-card text-center">
-          <Card.Title className="card-text">{movieData.Title}</Card.Title>
-          <Link to={"/movies/" + movieData._id}>
+          <Card.Title className="card-text">{movie.Title}</Card.Title>
+          <Link to={"/movies/" + movie._id}>
           <Button variant="light">Open</Button>
           </Link>
         </Card.Body>
@@ -26,10 +26,3 @@ export class MovieCard extends React.Component {
     );
   }
 }
-
-//Proptypes
-MovieCard.propTypes = {
-  movieData: PropTypes.shape({
-    Title: PropTypes.string
-  }).isRequired
-};

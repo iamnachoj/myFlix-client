@@ -9,7 +9,6 @@ import { setMovies } from '../../actions/actions';
 
 //React Components
 import { LoginView } from '../login-view/login-view';
-import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { RegistrationView } from "../registration-view/registration-view";
 import { DirectorView } from '../director-view/director-view';
@@ -69,7 +68,7 @@ class MainView extends React.Component {
           <Route exact path="/" render={() => {            
             if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
             if (movies === 0) return <MainView> loading... </MainView>
-            return <Col sm={12} md={6} lg={4} key={movie._id}><MovieList movies={movies} /></Col>
+            return <Col lg={4} key={movies._id}><MoviesList movies={movies}/></Col>
             }
            } />
 
