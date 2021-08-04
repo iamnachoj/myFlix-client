@@ -15,4 +15,6 @@ React.js
  - UI patterns that follow best trends.
 
 #Deployment
+
+ - Fork it and run first package.json script: 'npm start'. It will launch parcel and bundle up the code.
  - See demo <a href="https://iamnachoj.github.io/myFlix-client/">here!</a>
