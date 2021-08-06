@@ -20,7 +20,7 @@ It is also possible to delete the account and to update the user name or passwor
 
 # Features 
  - fully responsive built with React bootstrap
- - Easy scalability thanks to common UI patterns like the use of redux to manage the state
+ - Easy scalability thanks to common UI patterns like the use of Redux to manage the state
  - interaction to Mongo database.
  - UI patterns that follow best trends.
 
