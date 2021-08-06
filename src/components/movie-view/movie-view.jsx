@@ -56,7 +56,7 @@ export class MovieView extends React.Component{
          <span className="label">Genre: </span>
          <Link to={"/genre/" + movie.Genre.Name}><span className="value">{movie.Genre.Name}</span></Link>
        </div>
-       <Button onClick={()=> onBackClick()}>Back</Button>
+       <Button variant="danger" onClick={()=> onBackClick()}>Back</Button>
        <Button variant='info' className="fav-button" value={movie._id} onClick={(e) => this.addFavorite(e, movie)}>
           Add to Favorites
         </Button>
