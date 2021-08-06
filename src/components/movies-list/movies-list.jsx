@@ -22,7 +22,7 @@ function MoviesList(props) {
   if (!movies) return <div className="main-view">Oops, seems like that movie is not on our list :(</div>;
 
  return <>
-    <Col> <Link to='/my-profile'><Button style={{ margin: '1em' }}>My Profile</Button></Link> </Col>
+    <Col> <Link to='/my-profile'><Button variant="danger" style={{ margin: '1em' }}>My Profile</Button></Link> </Col>
     
      {/* this Column is missing a key */}
     <Col md={9}  style={{ margin: '1em' }}> 
