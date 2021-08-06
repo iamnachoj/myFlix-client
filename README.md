@@ -22,7 +22,7 @@ React.js
 
 # How it works?
 
-The site needs first and foremost to authenticate and authorise the user. If you are not an user, you need to register. Once you are registered, you will have full access to the MainView, where you will see displayed all the movies fetched from the MOVIE API project (link to it <a href="https://github.com/iamnachoj/Movie-API">here</a>
+The site needs first and foremost to authenticate and authorise the user. If you are not an user, you need to register. Once you are registered, you will have full access to the MainView, where you will see displayed all the movies fetched from the MOVIE API project (link to it <a href="https://github.com/iamnachoj/Movie-API">here</a>)
  
 From there, you can scroll through movies, click on 'open' and see more information about them, as a brief description, the director, and the genre (which are also links that when clicked offer more info about them)
  
@@ -31,4 +31,4 @@ You can also add movies to your favourite list and check out your profile, where
 It is also possible to delete the account and to update the user name or password.
  
  
-### See demo <a href="https://iamnachoj.github.io/myFlix-client/">here!</a>
+### See demo here:<a href="https://iamnachoj.github.io/myFlix-client/">MyFlix App</a>
