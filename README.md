@@ -31,4 +31,4 @@ You can also add movies to your favourite list and check out your profile, where
 It is also possible to delete the account and to update the user name or password.
  
  
-### See demo here:<a href="https://iamnachoj.github.io/myFlix-client/">MyFlix App</a>
+### See demo here: <a href="https://iamnachoj.github.io/myFlix-client/">MyFlix App</a>
