@@ -43,7 +43,7 @@ export function RegistrationView(props) {
   return (
  <>
    <Col></Col>
-   <Col>
+   <Col sm={12}>
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Form.Group className="mb-3">
        <Form.Label className="username form-label"> Username:
