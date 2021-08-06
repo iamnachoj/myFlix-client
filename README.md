@@ -1,5 +1,7 @@
 # myFlix-client
- Client-side block for MyFlix application built out of several React components that makes the application fast, asynchronous and very fluid. It mainly supports the UI for clients to access myFlix Rest API. 
+ Client-side block for MyFlixApp, a Single Page Appication (SPA) for cinephiles, where they can scroll through many different movies and see information about them, like their descriptions, genres, directors etc. Built out of several React components, the app runs fast, asynchronous and very fluid. 
+ 
+All the data in the app is fetched from my own MOVIE API. (link to it <a href="https://github.com/iamnachoj/Movie-API">here</a>)
 
 # Tools
 React.js 
@@ -10,7 +12,7 @@ React.js
  - 
 # How it works?
 
-The site needs first and foremost to authenticate and authorise the user. If you are not an user, you need to register. Once you are registered, you will have full access to the MainView, where you will see displayed all the movies fetched from the MOVIE API project (link to it <a href="https://github.com/iamnachoj/Movie-API">here</a>)
+The site needs first and foremost to authenticate and authorise the user. If you are not an user, you need to register. Once you are registered, you will have full access to the MainView, where you will see displayed all the movies fetched from the MOVIE API project 
  
 From there, you can scroll through movies, click on 'open' and see more information about them, as a brief description, the director, and the genre (which are also links that when clicked offer more info about them)
  
