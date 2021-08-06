@@ -18,7 +18,7 @@ import { GenreView } from '../genre-view/genre-view';
 import MoviesList from '../movies-list/movies-list';
 
 //React Bootstrap
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 
 //Main-view CSS
 import './main-view.scss';
@@ -57,7 +57,7 @@ class MainView extends React.Component {
       <Row className="main-view justify-content-md-center">
            { /* All Routes */}
           <Route exact path="/" render={() => {            
-            if (!user) return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
+            if (!user) return <Container><LoginView onLoggedIn={(user) => this.onLoggedIn(user)} /></Container>;
             if (movies === []) return <MainView> loading... </MainView>
             return <MoviesList key={movies._id} movies={movies}/>
             }

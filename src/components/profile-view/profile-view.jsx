@@ -34,7 +34,7 @@ export class ProfileView extends React.Component{
   }
   //GET method 
   getUser(token) {
-    let url = 'https://myflix-lounge.herokuapp.com/users/' + localStorage.getItem('Name');
+    let url = 'https://bukness-app.herokuapp.com/users/' + localStorage.getItem('Name');
     axios
         .get(url, {
             headers: { Authorization: `Bearer ${token}` },
@@ -70,7 +70,7 @@ export class ProfileView extends React.Component{
       const token = localStorage.getItem('token');
       const username = localStorage.getItem('Name');
 
-      axios.put(`https://myflixbypartearroyo.herokuapp.com/users/${username}`, {
+      axios.put(`https://bukness-app.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
         data: {
           Name: newName ? newName : this.state.Name,
@@ -120,7 +120,7 @@ export class ProfileView extends React.Component{
     const username = localStorage.getItem('Name');
 
     axios
-      .delete(`https://myflix-lounge.herokuapp.com/users/${username}/movies/${movie._id}`, {
+      .delete(`https://bukness-app.herokuapp.com/users/${username}/movies/${movie._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() => {
@@ -138,7 +138,7 @@ export class ProfileView extends React.Component{
 
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
-    let url = 'https://myflix-lounge.herokuapp.com/users/' + localStorage.getItem('Name');
+    let url = 'https://bukness-app.herokuapp.com/users/' + localStorage.getItem('Name');
 
     axios.delete(url, {
       headers: { Authorization: `Bearer ${token}` },
@@ -156,57 +156,61 @@ export class ProfileView extends React.Component{
 
   render(){
     const { FavouriteMovies, validated } = this.state;
-    const { user, onBackClick, movies } = this.props;
+    const { user, movies } = this.props;
     return(
       <>  
+      {/* Profile View */}
      <Card className="profile-card">
             <Row className="profile-view">
-              <Col className="center">
-               <h2 className="center">My Profile</h2>
+              <Col></Col>
+              <Col>
+               <h2 className="profile-view-title">My Profile</h2>
                <div className="user-name">
-                <span className="label">Name: </span>
+                <span className="label"><b>Name: </b></span>
                 <span className="value">{user}</span>
               </div>
               <div className="user-email">
-               <span className="label">Email: </span>
+               <span className="label"><b>Email: </b> </span>
                <span className="value">{this.state.Email}</span>--
               </div>
               <div className="user-date">
-               <span className="label">Birthdate: </span>
+               <span className="label"><b>Birthdate: </b> </span>
                <span className="value">{this.state.Birthday}</span>
              </div>
-              <Button className="back-button" onClick={() => onBackClick()}>Back</Button>
-              <a href="/"><Button variant="secondary"className="logout-button"onClick={()=>{this.onLoggedOut()}}>Log out</Button></a>
+              <Button variant="secondary" className="back-button" href="/">Back</Button>
+              <a href="/"><Button variant="warning"className="logout-button" onClick={()=>{this.onLoggedOut()}}>Log out</Button></a>
              </Col>
+             <Col></Col>
             </Row>
       </Card>
+
+      {/* Favourited Movies */}
       <Card className="favmovie-card">
-          <Card.Title className="center"><h3>Favourite Movies</h3></Card.Title>
-         {FavouriteMovies.length === 0 && <div className="text-center">Empty.</div>}
-          <div className="favourites-movies ">
-            {FavouriteMovies.length > 0 &&
-               movies.map((movie) => {
-                 if (movie._id === FavouriteMovies.find((favMovie) => favMovie === movie._id)) {
-                   return (
-                    <CardDeck key={movie._id} className="movie-card-deck">
-                      <Card className="favourites-item card-content" style={{ width: '16rem' }} key={movie._id}>
-                      <Card.Body>
-                       <Card.Title className="movie-card-title">{movie.Title}</Card.Title>
-                      <Button size='sm' className='profile-button remove-favourite' variant='danger' value={movie._id} onClick={(e) => this.removeFavouriteMovie(e, movie)}>
-                        Remove
-                       </Button>
-                     </Card.Body>
-                   </Card>
-                    </CardDeck>
-                  );
-                }
-               })}
-          </div>
-      </Card>
+          <Card.Title className="card-title"><h3>Favourite Movies</h3></Card.Title>
+                {FavouriteMovies.length === 0 && <div className="text-center">Empty.</div>}
+                 <div className="favourites-movies ">
+                      {FavouriteMovies.length > 0 &&
+                         movies.map((movie) => {
+                          if (movie._id === FavouriteMovies.find((favMovie) => favMovie === movie._id)) {
+                             return (
+                               <CardDeck key={movie._id} className="movie-card-deck">
+                                 <Card className="favourites-item card-content" style={{ width: '16rem' }} key={movie._id}>
+                                   <Card.Body>
+                                    <h5 className="movie-card-title">{movie.Title}</h5>
+                                    <Button size='sm' className='profile-button remove-favourite' variant='danger' value={movie._id} onClick={(e) => this.removeFavouriteMovie(e, movie)}>Remove</Button>
+                                   </Card.Body>
+                                  </Card>
+                               </CardDeck>
+                               );
+                           }
+                        })
+                      }
+                 </div>
+       </Card>
        <Card> 
-          <h2 className="center">Update Profile</h2>
+          <h2 className="card-title">Update Profile</h2>
           <Card.Body>
-            <Form noValidate validated={validated} className="update-form" onSubmit={(e) => this.handleUpdate(e, this.Name, this.Password, this.Email, this.Birthdate)}>
+            <Form className="update-form" noValidate validated={validated} onSubmit={(e) => this.handleUpdate(e, this.Name, this.Password, this.Email, this.Birthdate)}>
 
               <Form.Group controlId="formName">
                 <Form.Label className="form-label">Name</Form.Label>
@@ -230,13 +234,13 @@ export class ProfileView extends React.Component{
                 <Form.Control type="date" placeholder="Change Birthdate" onChange={(e) => this.setBirthdate(e.target.value)} />
               </Form.Group>
 
-              <Button variant='primary' type="submit" onClick={(e) => this.handleUpdate(e)}>
+              <Button variant='warning' type="submit" onClick={(e) => this.handleUpdate(e)}>
                 Update
               </Button>
             </Form>
           </Card.Body>
        </Card>
-       <Card className="delete-card center">
+       <Card className="card-title">
          <Card.Title><h3>Delete your Account</h3></Card.Title>
          <Card.Body>
                 <Button variant='danger' onClick={(e) => this.handleDeleteUser(e)}>
